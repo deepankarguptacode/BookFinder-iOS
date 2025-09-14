@@ -13,7 +13,7 @@ struct BookFinderApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SearchView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

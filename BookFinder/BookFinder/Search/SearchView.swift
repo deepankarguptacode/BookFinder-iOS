@@ -36,6 +36,10 @@ struct SearchView: View {
                     ForEach(vm.books) { book in
                         BookRowView(book: book)
                             .onAppear {
+                                // If last item appears -> fetch next page
+                                if vm.books.last == book {
+                                    vm.fetchNextPage()
+                                }
                             }
                     }
                     if vm.isLoading {

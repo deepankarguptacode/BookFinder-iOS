@@ -25,8 +25,19 @@ struct SearchView: View {
                 }
                 .padding()
 
+                if let err = vm.errorMessage {
+                    Text("Error: \(err)")
+                        .foregroundColor(.red)
+                        .padding(.horizontal)
+                }
+
                 // List with infinite scrolling and pull-to-refresh
                 List {
+                    ForEach(vm.books) { book in
+                        BookRowView(book: book)
+                            .onAppear {
+                            }
+                    }
                     if vm.isLoading {
                         HStack {
                             Spacer()

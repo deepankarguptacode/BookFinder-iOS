@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A475BC472E74AD530034C438 /* AnyCodable in Frameworks */ = {isa = PBXBuildFile; productRef = A475BC462E74AD530034C438 /* AnyCodable */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A475BC262E74AB7D0034C438 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A475BC472E74AD530034C438 /* AnyCodable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = BookFinder;
 			packageProductDependencies = (
+				A475BC462E74AD530034C438 /* AnyCodable */,
 			);
 			productName = BookFinder;
 			productReference = A475BC0F2E74AB7B0034C438 /* BookFinder.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = A475BC062E74AB7B0034C438;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A475BC452E74AD530034C438 /* XCRemoteSwiftPackageReference "AnyCodable" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A475BC102E74AB7B0034C438 /* Products */;
 			projectDirPath = "";
@@ -583,6 +592,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A475BC452E74AD530034C438 /* XCRemoteSwiftPackageReference "AnyCodable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Flight-School/AnyCodable";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A475BC462E74AD530034C438 /* AnyCodable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A475BC452E74AD530034C438 /* XCRemoteSwiftPackageReference "AnyCodable" */;
+			productName = AnyCodable;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A475BC072E74AB7B0034C438 /* Project object */;
 }

@@ -11,6 +11,7 @@ import Foundation
 
 protocol BookRepositoryProtocol {
     func search(title: String, page: Int) -> AnyPublisher<[Book], Error>
+    func fetchDetails(for book: Book) -> AnyPublisher<Book, Error>
 }
 
 /// Coordinates between view model and API Service.
@@ -39,6 +40,20 @@ class BookRepository: BookRepositoryProtocol {
                     }
                 }
                 return results
+            }
+            .eraseToAnyPublisher()
+    }
+
+    func fetchDetails(for book: Book) -> AnyPublisher<Book, Error> {
+        api.fetchBookDetails(bookKey: book.bookKey)
+            .map { detailResp -> Book in
+                var updated = book
+                if let desc = detailResp.description?.value {
+                    updated.description = desc
+                } else {
+                    updated.description = nil
+                }
+                return updated
             }
             .eraseToAnyPublisher()
     }

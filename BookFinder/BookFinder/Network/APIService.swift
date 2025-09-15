@@ -12,6 +12,7 @@ import Combine
 /// Simple API service for Open Library
 protocol APIServiceProtocol {
     func searchBooks(title: String, page: Int) -> AnyPublisher<SearchResponse, Error>
+    func fetchBookDetails(bookKey: String) -> AnyPublisher<BookDetailsResponse, Error>
 }
 
 struct SearchResponse: Codable {
@@ -21,6 +22,13 @@ struct SearchResponse: Codable {
     // We'll do custom decoding later in repository
     enum CodingKeys: String, CodingKey {
         case docs, numFound
+    }
+}
+
+struct BookDetailsResponse: Codable {
+    let description: BookDescription?
+    struct BookDescription: Codable {
+        let value: String?
     }
 }
 
@@ -50,5 +58,22 @@ class APIService: APIServiceProtocol {
             .decode(type: SearchResponse.self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
     }
-}
 
+    func fetchBookDetails(bookKey: String) -> AnyPublisher<BookDetailsResponse, Error> {
+        // bookKey might be "/works/OL...W" — ensure we trim leading slash
+        let trimmed = bookKey.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+        let urlString = "\(baseURL)/\(trimmed).json"
+        guard let url = URL(string: urlString) else {
+            return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
+        }
+        return session.dataTaskPublisher(for: url)
+            .tryMap { data, resp -> Data in
+                guard let http = resp as? HTTPURLResponse, 200..<300 ~= http.statusCode else {
+                    throw URLError(.badServerResponse)
+                }
+                return data
+            }
+            .decode(type: BookDetailsResponse.self, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
+    }
+}

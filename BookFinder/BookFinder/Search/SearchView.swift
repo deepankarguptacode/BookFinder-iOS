@@ -34,13 +34,15 @@ struct SearchView: View {
                 // List with infinite scrolling and pull-to-refresh
                 List {
                     ForEach(vm.books) { book in
-                        BookRowView(book: book)
-                            .onAppear {
-                                // If last item appears -> fetch next page
-                                if vm.books.last == book {
-                                    vm.fetchNextPage()
+                        NavigationLink(destination: BookDetailView(book: book)) {
+                            BookRowView(book: book)
+                                .onAppear {
+                                    // If last item appears -> fetch next page
+                                    if vm.books.last == book {
+                                        vm.fetchNextPage()
+                                    }
                                 }
-                            }
+                        }
                     }
                     if vm.isLoading {
                         HStack {

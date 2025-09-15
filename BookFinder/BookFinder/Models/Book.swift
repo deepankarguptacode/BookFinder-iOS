@@ -9,13 +9,12 @@ import Foundation
 
 /// Book model to represent a Book.
 struct Book: Identifiable, Codable, Equatable {
-    // We'll use the work key (e.g. "/works/OL468516W") as id
     let id: String
     let title: String
     let authors: [String]
     let coverId: Int?
     let firstPublishYear: Int?
-    let workKey: String // same as id but clearer
+    let bookKey: String // same as id but clearer
     var description: String?
 
     var coverURL: URL? {
@@ -39,7 +38,7 @@ struct Book: Identifiable, Codable, Equatable {
                     authors: authorArr,
                     coverId: coverId,
                     firstPublishYear: year,
-                    workKey: key,
+                    bookKey: key,
                     description: nil
         )
     }

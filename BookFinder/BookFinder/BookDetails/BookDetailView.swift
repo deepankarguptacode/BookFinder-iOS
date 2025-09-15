@@ -55,6 +55,19 @@ struct BookDetailView: View {
                     }
                 }
                 .padding()
+
+                // Save Button
+                Button(action: {
+                    viewModel.toggleSave()
+                }) {
+                    HStack {
+                        Image(systemName: viewModel.isSaved ? "heart.fill" : "heart")
+                        Text(viewModel.isSaved ? "Unsave" : "Save")
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+                .padding(.horizontal)
             }
         }
         .navigationTitle("Details")

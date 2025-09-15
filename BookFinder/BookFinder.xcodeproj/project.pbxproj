@@ -33,9 +33,33 @@
 		A475BC2F2E74AB7D0034C438 /* BookFinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookFinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A475BC712E77BD030034C438 /* Exceptions for "BookFinder" folder in "BookFinder" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CoreData/BookFinder.xcdatamodeld,
+			);
+			target = A475BC0E2E74AB7B0034C438 /* BookFinder */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		A475BC722E77BD030034C438 /* Exceptions for "BookFinder" folder in "Compile Sources" phase from "BookFinder" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = A475BC0B2E74AB7B0034C438 /* Sources */;
+			membershipExceptions = (
+				CoreData/BookFinder.xcdatamodeld,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A475BC112E74AB7B0034C438 /* BookFinder */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A475BC712E77BD030034C438 /* Exceptions for "BookFinder" folder in "BookFinder" target */,
+				A475BC722E77BD030034C438 /* Exceptions for "BookFinder" folder in "Compile Sources" phase from "BookFinder" target */,
+			);
 			path = BookFinder;
 			sourceTree = "<group>";
 		};
